@@ -41,47 +41,14 @@ const firebaseConfig = {
       })
         .then((res) => console.log(res))
         .catch((err) => console.log(err.message))
-        
-
-    // createUserWithEmailAndPassword(auth, email, password)
-    //     .then((userCredential) => {
-    //       //userCredential.user.displayName = username;
-        
-    //       return userCredential.user;
-    //     })
-    //     .catch((error) => {
-    //         //const errorCode = error.code;
-    //         const errorMessage = error.message;
-    //         alert(errorMessage);
-    //     });
-
-        // updateProfile(auth.currentUser, {
-        //   displayName: {username}
-        // }).then(() => {
-        //   // Profile updated!
-        //   // ...
-        // }).catch((error) => {
-        //   // An error occurred
-        //   // ...
-        // });
-        
 
   };
 
   const updateUser = async (username) => {
     
-    
     await updateProfile(auth.currentUser, {
            displayName: {username}
-          })//.then(() => {
-      //      // Profile updated!
-      //      // ...
-      //   }).catch((error) => {
-      //    const errorMessage = error.message;
-      //     alert(errorMessage);
-      //     // An error occurred
-      //   // ...
-      // });
+          })
   }
 
   

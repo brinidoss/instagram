@@ -22,44 +22,7 @@ function App() {
 
   useEffect( () => {
     setPosts(getPosts(db));
-
-
-    
-    // if (currentUser) {
-    //   setUser(currentUser);
-    //   setUsername(currentUser.displayName);
-    // }
-    // const unsubscribe = onAuthStateChanged(auth, (res) => {
-    //   res ? setUser(res) : setUser(null);
-    // })
-
-    //return unsubscribe;
-    //console.log(posts);
-    //console.log(currentUser);
   }, []);
-
-  // if (user !== currentUser) {
-  //   setUser(currentUser);
-  //   setUsername(currentUser.displayName);
-  //   setEmail(currentUser.email);
-  // }
-
-  // if (auth.currentUser && user !== auth.currentUser ) {
-  //   setUsername(auth.currentUser.displayName);
-  //   //setEmail(auth.currentUser.email);
-  //   setUser(auth.currentUser);
-  // }
-  // if (currentUser) {
-  // updateProfile(auth.currentUser, {
-  //         displayName: {username}
-  //       }).then(() => {
-  //         // Profile updated!
-  //         // ...
-  //       }).catch((error) => {
-  //         // An error occurred
-  //         // ...
-  //       });
-  // }
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -67,58 +30,10 @@ function App() {
     setUser(user);
     setEmail(user.email);
     
-    //console.log(username);
-      //const uid = user.uid;
-    
     } else {
-      // User is signed out
-      // ...
+ 
     }
   });
-
-  // if (user !== currentUser) {
-  //   setUser(currentUser);
-  //   setUsername(currentUser.displayName);
-  //   setEmail(currentUser.email);
-  // }
-
-  // if (auth.currentUser) {
-  //   setUsername(user.displayName);
-  // }
-
-  
-  
-  // if (currentUser) {
-  //   // The user object has basic properties such as display name, email, etc.
-  //   setUsername(currentUser.displayName);
-  //   setEmail(currentUser.email);
-  //   setUser(currentUser);
-  //   console.log(username);
-  //   //const photoURL = user.photoURL;
-
-  
-  //   // The user's ID, unique to the Firebase project. Do NOT use
-  //   // this value to authenticate with your backend server, if
-  //   // you have one. Use User.getToken() instead.
-  //   //const uid = user.uid;
-  // };
-
-  //sign up
-  // const handleSignUp = (event) => {
-  //   event.preventDefault();
-
-  //   createUserWithEmailAndPassword(auth, email, password)
-  //       .then((userCredential) => {
-  //         userCredential.user.displayName = username;
-  //         setUser(userCredential.user);
-  //         setOpenSignUp(false);
-  //       })
-  //       .catch((error) => {
-  //           //const errorCode = error.code;
-  //           const errorMessage = error.message;
-  //           alert(errorMessage);
-  //       });
-  // };
 
   //sign in
   const handleLogin = (event) => {
@@ -138,20 +53,6 @@ function App() {
         alert(errorMessage);
     });
   }
-
-  console.log(auth.currentUser);
-  console.log(user);
-  //console.log(username);
-
-  // if (user !== currentUser) {
-  //   setUser(currentUser);
-  //   setUsername(currentUser.displayName);
-  //   setEmail(currentUser.email);
-  // }
-
-  // if (user) {
-  //   setUsername(user.displayName);
-  // }
 
   return (
     <div className="App">
