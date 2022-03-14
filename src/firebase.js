@@ -44,6 +44,13 @@ const firebaseConfig = {
 
   };
 
+  const login = (email, password) => {
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+         
+        })
+  }
+
   const updateUser = async (username) => {
     
     await updateProfile(auth.currentUser, {
@@ -51,6 +58,14 @@ const firebaseConfig = {
           })
   }
 
+  const logout = () => {
+    signOut(auth).then(() => {
+      
+    }).catch((error) => {
+
+    });
+  }
+
   
 
-  export { db, auth, storage, getPosts, signUp, updateUser };
+  export { db, auth, storage, getPosts, signUp, updateUser, login, logout };

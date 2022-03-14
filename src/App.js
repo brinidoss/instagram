@@ -4,6 +4,7 @@ import Post from './components/Post';
 import { db, storage, auth, getPosts } from './firebase';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from 'firebase/auth';
 import { useEffect, useState } from 'react';
+import ImageUpload from './components/ImageUpload';
 
 
 function App() {
@@ -31,33 +32,18 @@ function App() {
     setEmail(user.email);
     
     } else {
- 
+      setUser(null);
+      setUsername(null);
+      setEmail('');
     }
   });
 
-  //sign in
-  const handleLogin = (event) => {
-    event.preventDefault();
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-          console.log(userCredential);
-          userCredential.displayName = username;
-          setUser(userCredential.user);
-          console.log(user);
-          setOpenLogin(false);
-      })
-      .catch((error) => {
-        //const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
-    });
-  }
+  console.log(user);
 
   return (
     <div className="App">
       <Header 
-        handleLogin={handleLogin}
+        user={user}
       />
 
         {user ? (
@@ -65,6 +51,8 @@ function App() {
         ) : (
             <p>No one signed in.</p>
         )}
+
+      <ImageUpload />
       
     </div>
   );

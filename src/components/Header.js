@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/Header.css';
 import UserAuth from './UserAuth';
 
-function Header({handleSignUp, handleLogin}) {
+function Header({user}) {
   return (
     <div className='Header'>
             <img
@@ -11,8 +11,10 @@ function Header({handleSignUp, handleLogin}) {
                 alt="instagram logo"
             />
 
+            <button className='newPost'>New Post</button>
+
             <UserAuth
-            
+              user={user}
             />
     </div>
   )
