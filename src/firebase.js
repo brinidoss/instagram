@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore/lite';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, signInAnonymously } from 'firebase/auth';
 import { getStorage } from 'firebase/storage';
 import { collection, getDocs } from "firebase/firestore/lite";
 
@@ -34,17 +34,56 @@ const firebaseConfig = {
   const signUp = (email, password, username) => {
   
     createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          userCredential.user.displayName = username;
-          return userCredential.user;
-        })
-        .catch((error) => {
-            //const errorCode = error.code;
-            const errorMessage = error.message;
-            alert(errorMessage);
+      .then(() => {
+        return updateProfile(auth.currentUser, {
+          displayName: username,
         });
+      })
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err.message))
+        
+
+    // createUserWithEmailAndPassword(auth, email, password)
+    //     .then((userCredential) => {
+    //       //userCredential.user.displayName = username;
+        
+    //       return userCredential.user;
+    //     })
+    //     .catch((error) => {
+    //         //const errorCode = error.code;
+    //         const errorMessage = error.message;
+    //         alert(errorMessage);
+    //     });
+
+        // updateProfile(auth.currentUser, {
+        //   displayName: {username}
+        // }).then(() => {
+        //   // Profile updated!
+        //   // ...
+        // }).catch((error) => {
+        //   // An error occurred
+        //   // ...
+        // });
+        
+
   };
+
+  const updateUser = async (username) => {
+    
+    
+    await updateProfile(auth.currentUser, {
+           displayName: {username}
+          })//.then(() => {
+      //      // Profile updated!
+      //      // ...
+      //   }).catch((error) => {
+      //    const errorMessage = error.message;
+      //     alert(errorMessage);
+      //     // An error occurred
+      //   // ...
+      // });
+  }
 
   
 
-  export { db, auth, storage, getPosts, signUp };
+  export { db, auth, storage, getPosts, signUp, updateUser };
